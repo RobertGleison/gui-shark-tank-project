@@ -1,39 +1,33 @@
+# Resume
 
-# Sumário
+Python application designed to interact with the database file created for a university project. The base code was originally developed by [Eduardo R. B. Marques](https://www.dcc.fc.up.pt/~edrdo/), DCC/FCUP. We modified it for our project, introducing new endpoints and interactions. The project was created in collaboration with Joana Carvalho Dias Pinto and Mariana dos Santos Gomes.
 
-[Eduardo R. B. Marques](https://www.dcc.fc.up.pt/~edrdo/), DCC/FCUP
-
-Aplicação Python demonstrando o acesso à BD MovieStream
-
-#  Referência
+# References
 
 - [sqlite3](https://docs.python.org/3/library/sqlite3.html)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [Jinja templates](https://jinja.palletsprojects.com/en/3.0.x/)
 
+# Dependencies
 
-# Instalação de dependências
+## Python 3 and pip 
 
-## Python 3 e pip 
-
-Deve ter o Python 3 e o gestor de pacotes pip instalado. Pode
-instalar os mesmos em Ubuntu por exemplo usando:
+Ensure you have Python 3 and the package manager pip installed. Then, install the Flask library. If you are using Ubuntu, follow these steps:
 
 ```
 sudo apt-get install python3 python3-pip
 ```
 
-## Bibliotecas Python
+## Flask
 
 ```
 pip3 install --user Flask 
 ```
 
+# Execution
 
-# Execução
-
-Inicie a aplicação executando `python3 server.py` e interaja com a mesma
-abrindo uma janela no seu browser  com o endereço [__http://localhost:9001/__](http://localhost:9001/) 
+Starts the application executing `python3 server.py` and
+open a browser page with the address [__http://localhost:9001/__](http://localhost:9001/) 
 
 ```
 $ python3 server.py
