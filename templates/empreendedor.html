@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{empreendedor.nome}}</h1>
+<p>
+  <b>ID do Empreendedor: </b>{{ empreendedor.empreendedor_id}}
+</p>
+<p>
+  <b>Nome: </b>{{ empreendedor.nome }}
+</p>
+<p>
+  <b>Projetos: </b>
+<ul>
+  {% for p in projeto %}
+  <li>
+    <a href="/projetos/{{p.projeto_id }}">{{ p.nome }}</a>
+  </li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}

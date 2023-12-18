@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Projetos</h1>
+<table>
+    <tr>
+        <th>
+            <b>Id</b>
+        </th>
+        <th>
+            <b>Nome</b>
+        </th>
+        <th>
+            <b>Website</b>
+        </th>
+        <th>
+            <b>Valor de Mercado</b>
+        </th>
+        <th>
+            <b>Categoria</b>
+        </th>
+        <th>
+            <b>Descrição</b>
+        </th>
+        <th>
+            <b>Episódio</b>
+        </th>
+    </tr>
+    {% for p in projeto %}
+    <tr>
+        <td>
+            <a href="/projetos/{{ p.projeto_id }}">{{p.projeto_id }}</a>
+        </td>
+        <td>
+            {{ p.nome }}
+        </td>
+        <td>
+            {{ p.website }}
+        </td>
+        <td>
+            {{ p.valor_de_mercado }}
+        </td>
+        <td>
+            {{ p.categoria }}
+        </td>
+        <td>
+            {{ p.descricao }}
+        </td>
+        <td>
+            {{ p.numero_do_episodio }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,24 @@
+
+<!-- 
+É o arquivo base que é herdado por todos os arquivos HTML. 
+No momento, ele só cria o botão home em cima da página para que as outras páginas que herdam esse arquivo também o tenham, sem precisar replicar o código.
+
+Tutorial tags HTML:
+doctype: configuração padrão para toda aplicação html, configura por exemplo UTF-8, lingaguem inglẽs, etc. Mas fica escondido a configuração.
+title: nome da aba do google
+nav: botões de navegação, no caso, usamos o botão home
+a: link. No caso estamos colocando o botão home pra levar a "/"
+section: Não é usado ainda, é apenas pra colocar informações.
+
+ -->
+
+<!doctype html>
+<title>Shark Tank</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <a href="/">Home</a>
+</nav>
+<section class="content">
+  {% block content %}
+  {% endblock %}
+</section>

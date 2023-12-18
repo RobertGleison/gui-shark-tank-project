@@ -1,0 +1,96 @@
+<!--
+É o arquivo que renderiza a aplicação HTML. Este arquivo é responsável por fazer os hiperlinks de página para página.
+O arquivo app.py já te deixa na página que você quer se vc digitar a url correspondente, mas para navegar entre páginas usando botões,
+as configuração são feitas neste arquivo.
+
+Tutorial tags HTML:
+h1,h2...h7: Títulos. Quanto menor o número, maior a fonte. o maior título é h1
+p: paragrafo
+br: break row, quebra de linha
+form: criação de formulário, como login e senha etc. usamos para fazer a pesquisa
+
+O resto vcs podem ver passando o mouse por cima das tags.
+-->
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Shark Tank - GUI</h1>
+
+<h2>Projeto</h2>
+<p>Esta aplicação web ilustra uma interface gráfica interativa para a base de dados Shark Tank.
+    Este projeto foi feito para a grade de Base de Dados, pelos alunos: Joana Carvalho Dias Pinto,
+    Mariana dos Santos Gomes e Robert Gleison dos Reis Pereira.
+</p>
+<br>
+<h2>Estatísticas agrupadas</h2>
+
+<!-- Inicio da tabela -->
+<table>
+    <tr>
+        <th>Entidades</th>
+        <th>nº de Linhas</th>
+    </tr>
+    <tr>
+        <td>Empreendedores</td>
+        <td>{{stats.n_empreendedores }}</td>
+    </tr>
+    <tr>
+        <td>Projetos</td>
+        <td>{{stats.n_projetos}}</td>
+    </tr>
+    <tr>
+        <td>Episodios</td>
+        <td>{{stats.n_episodios}}</td>
+    </tr>
+    <tr>
+        <td>Sharks</td>
+        <td>{{stats.n_sharks}}</td>
+    </tr>
+    <tr>
+        <td>Investimentos</td>
+        <td>{{stats.n_investimentos}}</td>
+    </tr>
+</table>
+<!-- Fim da tabela -->
+
+<br>
+<h2>Navegação interativa</h2>
+
+<h3>Empreendedores:</h3>
+<p>Acessar informação de empreendedores:</p>
+<p>
+    <!-- Botão que de listar todos os empreendedores -->
+    <a href="/empreendedores">listar empreendedores</a>
+</p>
+<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+<form name="e_id"
+    action="javascript:window.open('/empreendedores/'+document.forms['e_id'].elements['id'].value,'_self')">
+    Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
+</form>
+<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+<form name="e_nome"
+    action="javascript:window.open('/empreendedores/search/'+document.forms['e_nome'].elements['expr'].value,'_self')">
+    Procurar por nome: <input name="expr" id="expr" value="Aaron Krause" required />
+    <input type="submit" value="procurar" />
+</form>
+
+<h3>Projetos:</h3>
+<p>Acessar informação de projetos:</p>
+<p>
+    <!-- Botão que de listar todos os projetos -->
+    <a href="/projetos">listar projetos</a>
+</p>
+<!-- cria uma nova página com o resultado da pesquisa pelo id-->
+<form name="p_id" action="javascript:window.open('/projetos/'+document.forms['p_id'].elements['id'].value,'_self')">
+    Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
+</form>
+<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+<form name="p_nome"
+    action="javascript:window.open('/projetos/search/'+document.forms['p_nome'].elements['expr'].value,'_self')">
+    Procurar por nome: <input name="expr" id="expr" value="Ava The Elephant" required />
+    <input type="submit" value="procurar" />
+</form>
+
+<hr>
+
+{% endblock %}
