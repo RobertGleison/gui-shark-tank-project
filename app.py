@@ -120,7 +120,7 @@ def view_investments_by_ids(id_projeto, id_shark):
     num_id_shark = int(id_shark)
 
     projetos = db.execute('''
-      SELECT projeto_id
+      SELECT projeto_id, nome
       FROM projeto
       WHERE projeto_id = ?;
     ''', [num_id_projeto]).fetchone()

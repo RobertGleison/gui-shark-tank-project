@@ -31,5 +31,21 @@
   </li>
   {% endfor %}
 </ul>
+<b>Empreendedores:</b>
+<ul>
+  {% for emp in empreendedor %}
+  <li>
+    <a href="/empreendedores/{{emp.empreendedor_id }}">{{emp.nome}}</a>
+  </li>
+  {% endfor %}
+</ul>
+<b>Investimentos: </b>
+<ul>
+  {% for i in inestimento %}
+  <li>
+    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">{{i.valor_do_investimento}}, {{i.porcentagem_vendida_do_projeto}}</a>
+  </li>
+  {% endfor %}
+</ul>
 </p>
 {% endblock %}
