@@ -91,6 +91,69 @@ O resto vcs podem ver passando o mouse por cima das tags.
     <input type="submit" value="procurar" />
 </form>
 
-<hr>
+<h3>Investimentos:</h3>
+<p>Acessar informação de investimentos:</p>
+<p>
+    <!-- Botão que de listar todos os investimentos -->
+    <a href="/investimentos">listar investimentos</a>
+</p>
+
+<!-- cria uma nova página com o resultado da pesquisa pelo id do investimento -->
+<form id="searchForm" action="javascript:window.open('investimentos/'+document.forms['searchForm'].elements['projeto_id'].value+'/'+document.forms['searchForm'].elements['shark_id'].value,'_self')">
+    Procurar por Id do projeto:<input type="number" name="projeto_id" value="1" min="1" /><br />
+    Procurar por Id do shark:<input type="number" name="shark_id" value="1" min="1" /><br />
+    <input type="submit" value="Procurar" />
+</form>
+
+<script>
+    const searchForm = document.getElementById('searchForm');
+    searchForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Extract project ID and shark ID from the form fields
+        const projectId = parseInt(searchForm.querySelector('input[name="projeto_id"]').value);
+        const sharkId = parseInt(searchForm.querySelector('input[name="shark_id"]').value);
+
+        // Generate the URL based on the extracted IDs
+        const url = 'investimentos/' + projectId + '/' + sharkId;
+
+        // Open a new window or tab with the generated URL
+        window.open(url, '_self');
+    });
+</script>
+
+<h3>Episodios:</h3>
+<p>Acessar informação de episodios:</p>
+<p>
+    <!-- Botão que de listar todos os episodios -->
+    <a href="/episodios">listar episodios</a>
+</p>
+<!-- cria uma nova página com o resultado da pesquisa pelo numero do episodio-->
+<form name="Numero_do_episodio" action="javascript:window.open('/episodios/'+document.forms['p_id'].elements['id'].value,'_self')">
+    Procurar por numero do episodio:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
+</form>
+<!-- cria uma nova página com o resultado da pesquisa pela temporada-->
+<form name="temporada"
+    action="javascript:window.open('/episodios/temporada/'+document.forms['temporada'].elements['expr'].value,'_self')">
+    Procurar por numero de temporada: <input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
+    <input type="submit" value="procurar" />
+</form>
+
+<h3>Shark:</h3>
+<p>Acessar informação de Shark:</p>
+<p>
+    <!-- Botão que de listar todos os shark -->
+    <a href="/sharks">listar shark</a>
+</p>
+<!-- cria uma nova página com o resultado da pesquisa pelo id-->
+<form name="p_id" action="javascript:window.open('/sharks/'+document.forms['p_id'].elements['id'].value,'_self')">
+    Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
+</form>
+<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+<form name="p_nome"
+    action="javascript:window.open('/sharks/search/'+document.forms['p_nome'].elements['expr'].value,'_self')">
+    Procurar por nome: <input name="expr" id="expr" value="Barbara Corcoran" required />
+    <input type="submit" value="procurar" />
+</form>
 
 {% endblock %}

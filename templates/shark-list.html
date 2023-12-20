@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Sharks</h1>
+<table>
+    <tr>
+        <th>
+            <b>Id</b>
+        </th>
+        <th>
+            <b>Nome</b>
+        </th>
+    </tr>
+    {% for s in shark %}
+    <tr>
+        <td>
+            <a href="/sharks/{{ s.shark_id }}">{{s.shark_id}}</a>
+        </td>
+        <td>
+            {{s.nome}}</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

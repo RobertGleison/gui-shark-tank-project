@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Investimentos</h1>
+<table>
+    <tr>
+        <th>
+            <b>Id do Shark</b>
+        </th>
+        <th>
+            <b>Id do projeto</b>
+        </th>
+        <th>
+            <b>Valor do investimento</b>
+        </th>
+        <th>
+            <b>Percentagem vendida do projeto</b>
+        </th>
+    </tr>
+    {% for i in investimento %}
+    <tr>
+        <td>
+            <a href="/sharks/{{ i.shark_id }}">{{i.shark_id }}</a>
+        </td>
+        <td>
+            <a href="/projetos/{{ i.projeto_id}}">{{i.projeto_id}}</a>
+        </td>
+        <td>
+            {{ i.valor_do_investimento }}
+        </td>
+        <td>
+            {{ i.porcentagem_vendida_do_projeto }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

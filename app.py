@@ -104,3 +104,137 @@ def search_projeto(expr):
       WHERE nome LIKE ?;
     ''',[string]).fetchall()
     return render_template('projeto-search.html', search=search, projeto=projetos)
+
+@APP.route('/investimentos')
+def list_investimentos():
+    investimentos = db.execute('''
+      SELECT shark_id, projeto_id, valor_do_investimento, porcentagem_vendida_do_projeto
+      FROM investimento
+      ORDER BY projeto_id, shark_id;         
+      ''' ).fetchall()
+    return render_template('investimento-list.html', investimento=investimentos)
+
+@APP.route('/investimentos/<int:id_projeto>/<int:id_shark>')
+def view_investments_by_ids(id_projeto, id_shark):
+    num_id_projeto = int(id_projeto)
+    num_id_shark = int(id_shark)
+
+    projetos = db.execute('''
+      SELECT projeto_id
+      FROM projeto
+      WHERE projeto_id = ?;
+    ''', [num_id_projeto]).fetchone()
+
+    sharks = db.execute('''
+      SELECT shark_id, nome
+      FROM shark
+      WHERE shark_id = ?
+      ORDER BY shark_id;
+    ''', [num_id_shark]).fetchone()
+
+    if projetos is None:
+        abort(404, 'ID do projeto {} não existe .'.format(num_id_projeto))
+
+    if sharks is None:
+        abort(404, 'ID do shark {} não existe .'.format(num_id_shark))    
+
+    investimentos = db.execute('''
+      SELECT projeto_id, shark_id, valor_do_investimento, porcentagem_vendida_do_projeto 
+      FROM investimento
+      WHERE projeto_id = ? AND shark_id = ?
+      ORDER BY projeto_id, shark_id;
+    ''', [num_id_projeto, num_id_shark]).fetchone()
+
+    return render_template('investimento.html', investimento=investimentos, projeto=projetos, shark=sharks)
+
+@APP.route('/investimentos/search/<expr>/')
+def search_investimento(expr):
+    temp = int(expr)
+    integer = '%' + int(expr) + '%'
+    search = {'response': temp }
+    investimentos = db.execute(''' 
+      SELECT shark_id, projeto_id, valor_do_investimento, porcentagem_vendida_do_projeto
+      FROM investimento
+      WHERE valor_do_investimento LIKE ?;
+    ''',[integer]).fetchall()
+    return render_template('projeto-search.html', search=search, investimento=investimentos)
+
+@APP.route('/episodios')
+def list_episodios():
+    episodios = db.execute('''
+        SELECT numero_do_episodio, temporada
+        FROM episodio
+        ORDER BY numero_do_episodio;
+    ''').fetchall()
+    return render_template('episodio-list.html', episodio=episodios)
+
+@APP.route('/episodios/<int:id>/')
+def view_episodes_by_id(id):
+    num_id = int(id)
+    episodios = db.execute('''
+      SELECT numero_do_episodio, temporada
+      FROM episodio
+      WHERE numero_do_episodio = ?
+      ORDER BY numero_do_episodio;
+    ''', [num_id]).fetchone()
+
+    if episodios is None:
+        abort(404, 'ID do episodio {} não existe .'.format(num_id))
+
+    return render_template('episodio.html', episodio=episodios, temp = num_id)
+
+@APP.route('/episodios/temporada/<int:id>/')
+def view_episodes_by_season(id):
+    num_id = int(id)
+    episodios = db.execute('''
+      SELECT numero_do_episodio, temporada
+      FROM episodio
+      WHERE temporada = ?
+      ORDER BY numero_do_episodio;
+    ''', [num_id]).fetchone()
+
+    if episodios is None:
+        abort(404, 'ID do episodio {} não existe .'.format(num_id))
+
+    return render_template('episodio-season.html', episodio=episodios)
+
+@APP.route('/sharks')
+def list_shark():
+    sharks = db.execute('''
+      SELECT shark_id, nome
+      FROM shark
+      ORDER BY shark_id;
+    ''').fetchall()
+    return render_template('shark-list.html', shark=sharks)
+
+@APP.route('/sharks/<int:id>/')
+def view_episodes_by_shark(id):
+    num_id = int(id)
+    sharks = db.execute('''
+      SELECT nome
+      FROM shark
+      WHERE shark_id = ?
+      ORDER BY shark_id;
+    ''', [num_id]).fetchone()
+
+    if sharks is None:
+        abort(404, 'ID do shark {} não existe .'.format(num_id))
+
+    episodios = db.execute('''
+      SELECT numero_do_episodio, temporada 
+      FROM episodio
+      WHERE numero_do_episodio = ?;
+    ''', [num_id]).fetchall()
+    return render_template('shark.html', episodio=episodios, shark=sharks)
+
+@APP.route('/sharks/search/<expr>/')
+def search_shark(expr):
+    temp = str(expr)
+    string = '%' + str(expr) + '%'
+    search = {'response': temp }
+    sharks = db.execute(''' 
+      SELECT nome
+      FROM shark
+      WHERE nome LIKE ?;
+    ''',[string]).fetchall()
+    return render_template('shark-search.html', search=search, shark=sharks)

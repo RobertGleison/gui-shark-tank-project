@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{shark.nome}}</h1>
+<p>
+<p>
+  <b>Nome: </b>{{ shark.nome }}
+</p>
+<p>
+  <b>Episódios: </b>
+<ul>
+  {% for ep in episodio %}
+  <li>
+    <a href="/episodios/{{ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a>
+  </li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}
