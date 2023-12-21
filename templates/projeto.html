@@ -31,14 +31,18 @@
     <a href="/empreendedores/{{emp.empreendedor_id }}">{{emp.nome}}</a>
   </li>
   {% endfor %}
+  {% if investimento %}
 </ul>
 <b>Investimentos Recebidos: </b>
 <ul>
+  
   {% for i in investimento %}
   <li>
     <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">Shark {{i.shark_id }}: $ {{i.valor_do_investimento}},00</a>
   </li>
   {% endfor %}
+  
 </ul>
 </p>
+{% endif %}
 {% endblock %}
