@@ -20,17 +20,10 @@
   <b>Descrição: </b>{{ projeto.descricao }}
 </p>
 <p>
-  <b>Episódio: </b>{{ projeto.numero_do_episodio }}
+  <b>Episódio: </b>
+  <a href="/episodios/{{projeto.numero_do_episodio }}">{{ projeto.numero_do_episodio }}</a>
 </p>
 <p>
-  <b>Episódios: </b>
-<ul>
-  {% for ep in episodio %}
-  <li>
-    <a href="/episodios/{{ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a>
-  </li>
-  {% endfor %}
-</ul>
 <b>Empreendedores:</b>
 <ul>
   {% for emp in empreendedor %}
@@ -41,9 +34,9 @@
 </ul>
 <b>Investimentos: </b>
 <ul>
-  {% for i in inestimento %}
+  {% for i in investimento %}
   <li>
-    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">{{i.valor_do_investimento}}, {{i.porcentagem_vendida_do_projeto}}</a>
+    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">{{i.valor_do_investimento}}</a>
   </li>
   {% endfor %}
 </ul>

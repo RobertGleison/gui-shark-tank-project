@@ -8,13 +8,7 @@
   <b>Nome: </b>{{ empreendedor.nome }}
 </p>
 <p>
-  <b>Projetos: </b>
-<ul>
-  {% for p in projeto %}
-  <li>
-    <a href="/projetos/{{p.projeto_id }}">{{ p.nome }}</a>
-  </li>
-  {% endfor %}
-</ul>
+  <b>Projeto: </b>
+  <a href="/projetos/{{projeto.projeto_id }}">{{ projeto.nome }}</a>
 </p>
 {% endblock %}

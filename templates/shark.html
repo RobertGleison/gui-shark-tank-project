@@ -16,9 +16,9 @@
 </ul>
 <b>Investimentos: </b>
 <ul>
-  {% for i in inestimento %}
+  {% for i in investimento %}
   <li>
-    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">{{i.valor_do_investimento}}, {{i.porcentagem_vendida_do_projeto}}</a>
+    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">{{i.valor_do_investimento:.2f}}</a>
   </li>
   {% endfor %}
 </ul>
