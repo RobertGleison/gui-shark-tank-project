@@ -47,6 +47,7 @@ def view_projects_by_empreeendedor(id):
       WHERE e.empreendedor_id = ?
       ORDER BY p.nome;
     ''', [num_id]).fetchone()
+
     return render_template('empreendedor.html', empreendedor=empreendedores, projeto=projetos)
 
 @APP.route('/empreendedores/search/<expr>/')
@@ -150,6 +151,9 @@ def view_investments_by_ids(id_projeto, id_shark):
       WHERE projeto_id = ? AND shark_id = ?
       ORDER BY projeto_id, shark_id;
     ''', [num_id_projeto, num_id_shark]).fetchone()
+
+    if investimentos is None:
+      abort(404, 'ID do investimento {} não existe .'.format(str({num_id_projeto} +'/' + {num_id_shark})))
 
     return render_template('investimento.html', investimento=investimentos, projeto=projetos, shark=sharks)
 

@@ -6,7 +6,7 @@
   <b>Nome: </b>{{ shark.nome }}
 </p>
 <p>
-  <b>Episódios: </b>
+  <b>Participações em episódios: </b>
 <ul>
   {% for ep in episodio %}
   <li>
@@ -14,11 +14,11 @@
   </li>
   {% endfor %}
 </ul>
-<b>Investimentos: </b>
+<b>Investimentos feitos: </b>
 <ul>
   {% for i in investimento %}
   <li>
-    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">$ {{i.valor_do_investimento}},00</a>
+    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">Projeto {{i.projeto_id }}: $ {{i.valor_do_investimento}},00</a>
   </li>
   {% endfor %}
 </ul>

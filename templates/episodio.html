@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{episodio.num}}</h1>
+<h1>Episódio {{episodio.numero_do_episodio}}</h1>
 <p>
   <b>Numero do Episodio: </b>{{ episodio.numero_do_episodio}}
 </p>
 <p>
-  <b>Projetos:</b>
+  <b>Projetos apresentados:</b>
 
 <ul>
   {% for p in projeto %}
@@ -15,7 +15,7 @@
   {% endfor %}
 </ul>
 
-<b>Sharks:</b>
+<b>Sharks participantes:</b>
 <ul>
   {% for s in shark %}
   <li>

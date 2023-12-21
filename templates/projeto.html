@@ -32,11 +32,11 @@
   </li>
   {% endfor %}
 </ul>
-<b>Investimentos: </b>
+<b>Investimentos Recebidos: </b>
 <ul>
   {% for i in investimento %}
   <li>
-    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">$ {{i.valor_do_investimento}},00</a>
+    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">Shark {{i.shark_id }}: $ {{i.valor_do_investimento}},00</a>
   </li>
   {% endfor %}
 </ul>
