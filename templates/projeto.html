@@ -11,7 +11,7 @@
   <b>Website: </b>{{ projeto.website }}
 </p>
 <p>
-  <b>Valor de Mercado: </b>{{ projeto.valor_de_mercado }}
+  <b>Valor de Mercado: </b>$ {{ projeto.valor_de_mercado }},00
 </p>
 <p>
   <b>Categoria: </b>{{ projeto.categoria }}
@@ -36,7 +36,7 @@
 <ul>
   {% for i in investimento %}
   <li>
-    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">{{i.valor_do_investimento}}</a>
+    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">$ {{i.valor_do_investimento}},00</a>
   </li>
   {% endfor %}
 </ul>
