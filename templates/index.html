@@ -1,16 +1,4 @@
-<!--
-É o arquivo que renderiza a aplicação HTML. Este arquivo é responsável por fazer os hiperlinks de página para página.
-O arquivo app.py já te deixa na página que você quer se vc digitar a url correspondente, mas para navegar entre páginas usando botões,
-as configuração são feitas neste arquivo.
 
-Tutorial tags HTML:
-h1,h2...h7: Títulos. Quanto menor o número, maior a fonte. o maior título é h1
-p: paragrafo
-br: break row, quebra de linha
-form: criação de formulário, como login e senha etc. usamos para fazer a pesquisa
-
-O resto vcs podem ver passando o mouse por cima das tags.
--->
 {% extends 'base.html' %}
 {% block content %}
 
@@ -100,8 +88,8 @@ O resto vcs podem ver passando o mouse por cima das tags.
 
 <!-- cria uma nova página com o resultado da pesquisa pelo id do investimento -->
 <form id="searchForm" action="javascript:window.open('investimentos/'+document.forms['searchForm'].elements['projeto_id'].value+'/'+document.forms['searchForm'].elements['shark_id'].value,'_self')">
-    Procurar por Id do projeto:<input type="number" name="projeto_id" value="1" min="1" /><br />
-    Procurar por Id do shark:<input type="number" name="shark_id" value="1" min="1" /><br />
+    Inserir Id do projeto:<input type="number" name="projeto_id" value="1" min="1" /><br />
+    Inserir Id do shark:<input type="number" name="shark_id" value="1" min="1" /><br />
     <input type="submit" value="Procurar" />
 </form>
 
@@ -129,13 +117,13 @@ O resto vcs podem ver passando o mouse por cima das tags.
     <a href="/episodios">listar episodios</a>
 </p>
 <!-- cria uma nova página com o resultado da pesquisa pelo numero do episodio-->
-<form name="Numero_do_episodio" action="javascript:window.open('/episodios/'+document.forms['p_id'].elements['id'].value,'_self')">
+<form name="Numero_do_episodio" action="javascript:window.open('/episodios/'+document.forms['Numero_do_episodio'].elements['id'].value,'_self')">
     Procurar por numero do episodio:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
 </form>
 <!-- cria uma nova página com o resultado da pesquisa pela temporada-->
-<form name="temporada"
-    action="javascript:window.open('/episodios/temporada/'+document.forms['temporada'].elements['expr'].value,'_self')">
-    Procurar por numero de temporada: <input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
+<form name="temporada_id"
+    action="javascript:window.open('/episodios/temporada/'+document.forms['temporada_id'].elements['temporada'].value,'_self')">
+    Procurar por numero de temporada: <input value="1" name="temporada" type="number" min="1" />
     <input type="submit" value="procurar" />
 </form>
 
@@ -146,12 +134,12 @@ O resto vcs podem ver passando o mouse por cima das tags.
     <a href="/sharks">listar shark</a>
 </p>
 <!-- cria uma nova página com o resultado da pesquisa pelo id-->
-<form name="p_id" action="javascript:window.open('/sharks/'+document.forms['p_id'].elements['id'].value,'_self')">
+<form name="shark_id" action="javascript:window.open('/sharks/'+document.forms['shark_id'].elements['id'].value,'_self')">
     Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
 </form>
 <!-- cria uma nova página com o resultado da pesquisa pelo nome-->
-<form name="p_nome"
-    action="javascript:window.open('/sharks/search/'+document.forms['p_nome'].elements['expr'].value,'_self')">
+<form name="shark_nome"
+    action="javascript:window.open('/sharks/search/'+document.forms['shark_nome'].elements['expr'].value,'_self')">
     Procurar por nome: <input name="expr" id="expr" value="Barbara Corcoran" required />
     <input type="submit" value="procurar" />
 </form>

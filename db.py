@@ -2,8 +2,6 @@ import logging
 import sqlite3
 import re
 
-#Conexão com o banco, já está setado, não precisam de configurar
-#Basicamente ele se conecta ao arquivo shark_tank.db dentro do diretório
 global DB
 DB = dict()
 

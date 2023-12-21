@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Resultados de Procura</h1>
-<p><b>Expressão procurada</b>: {{temp}}</p>
+<p><b>Temporada procurada</b>: {{temporada.temporada}}</p>
+<p><b>Episódios da temporada:</b></p>
 <ul>
   {% for ep in episodio %}
   <li>
-    <a href="/episodios/temporada/{{ ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a>
+    <a href="/episodios/{{ ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a>
   </li>
   {% endfor %}
 </ul>

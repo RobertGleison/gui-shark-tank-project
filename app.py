@@ -207,20 +207,26 @@ def view_episodes_by_id(id):
 
     return render_template('episodio.html', episodio=episodios, projeto = projetos, shark = sharks)
 
-@APP.route('/episodios/temporada/<int:id>/')
-def view_episodes_by_season(id):
-    num_id = int(id)
+@APP.route('/episodios/temporada/<int:temporada>/')
+def view_episodes_by_season(temporada):
+    num_id = int(temporada)
     episodios = db.execute('''
       SELECT numero_do_episodio, temporada
       FROM episodio
       WHERE temporada = ?
       ORDER BY numero_do_episodio;
+    ''', [num_id]).fetchall()
+
+    temporadas = db.execute('''
+      SELECT temporada
+      FROM episodio
+      WHERE temporada = ?
     ''', [num_id]).fetchone()
 
     if episodios is None:
         abort(404, 'ID do episodio {} não existe .'.format(num_id))
 
-    return render_template('episodio-season.html', episodio=episodios)
+    return render_template('episodio-season.html', episodio=episodios, temporada=temporadas)
 
 @APP.route('/sharks')
 def list_shark():
@@ -238,7 +244,6 @@ def view_episodes_by_shark(id):
       SELECT nome
       FROM shark
       WHERE shark_id = ?
-      ORDER BY shark_id;
     ''', [num_id]).fetchone()
 
     if sharks is None:
@@ -263,7 +268,7 @@ def search_shark(expr):
     string = '%' + str(expr) + '%'
     search = {'response': temp }
     sharks = db.execute(''' 
-      SELECT nome
+      SELECT nome, shark_id
       FROM shark
       WHERE nome LIKE ?;
     ''',[string]).fetchall()
