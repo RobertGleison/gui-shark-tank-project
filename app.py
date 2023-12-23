@@ -273,3 +273,14 @@ def search_shark(expr):
       WHERE nome LIKE ?;
     ''',[string]).fetchall()
     return render_template('shark-search.html', search=search, shark=sharks)
+
+@APP.route('/total_investments')
+def search_total_investments():
+    total_investments = db.execute('''
+    SELECT s.shark_id as shark, nome, sum(valor_do_investimento) AS total FROM
+    shark s JOIN investimento i
+    ON i.shark_id = s.shark_id 
+    GROUP BY nome
+    ORDER BY nome;''' ).fetchall()
+    return render_template('investimento_agrupado.html', total_investment = total_investments)
+

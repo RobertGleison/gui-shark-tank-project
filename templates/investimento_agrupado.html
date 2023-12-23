@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Valor total investido:</h1>
+
+<table>
+    <tr>
+        <th>Sharks</th>
+        <th>Valor investido</th>
+    </tr>
+    {% for i in total_investment %}
+    <tr>
+        <td>{{i.nome}}</td>
+        <td>{{i.total}},00</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
