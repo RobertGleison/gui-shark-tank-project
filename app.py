@@ -20,7 +20,7 @@ def index():
     return render_template('index.html', stats=stats)
 
 @APP.route('/empreendedores')
-def list_empreendedores():
+def lista_empreendedores():
     empreendedores = db.execute('''
     SELECT empreendedor_id, nome, genero, projeto_id
     FROM empreendedor
@@ -29,7 +29,7 @@ def list_empreendedores():
     return render_template('empreendedor-list.html', empreendedor=empreendedores)
 
 @APP.route('/empreendedores/<int:id>/')
-def view_projects_by_empreeendedor(id):
+def ver_projetos_por_empreendedor(id):
     num_id = int(id)
     empreendedores = db.execute('''
     SELECT empreendedor_id, nome, genero, projeto_id
@@ -50,7 +50,7 @@ def view_projects_by_empreeendedor(id):
     return render_template('empreendedor.html', empreendedor=empreendedores, projeto=projetos)
 
 @APP.route('/empreendedores/search/<expr>/')
-def search_empreendedor(expr):
+def procurar_empreendedor(expr):
     temp = str(expr)
     string = '%' + str(expr) + '%'
     search = {'response': temp }
@@ -65,7 +65,7 @@ def search_empreendedor(expr):
     return render_template('empreendedor-search.html', search=search, empreendedor=empreendedores)
 
 @APP.route('/projetos')
-def list_projetos():
+def lista_projetos():
     projetos = db.execute('''
     SELECT projeto_id, nome, website, valor_de_mercado, categoria, descricao, numero_do_episodio
     FROM projeto
@@ -74,7 +74,7 @@ def list_projetos():
     return render_template('projeto-list.html', projeto=projetos)
 
 @APP.route('/projetos/<int:id>/')
-def view_episodes_by_project(id):
+def ver_episodios_por_projeto(id):
     num_id = int(id)
     projetos = db.execute('''
     SELECT projeto_id, nome, website, valor_de_mercado,
@@ -101,7 +101,7 @@ def view_episodes_by_project(id):
     return render_template('projeto.html', empreendedor=empreendedores, projeto=projetos, investimento= investimentos)
 
 @APP.route('/projetos/search/<expr>/')
-def search_projeto(expr):
+def procurar_projeto(expr):
     temp = str(expr)
     string = '%' + str(expr) + '%'
     search = {'response': temp }
@@ -117,7 +117,7 @@ def search_projeto(expr):
     return render_template('projeto-search.html', search=search, projeto=projetos)
 
 @APP.route('/investimentos')
-def list_investimentos():
+def lista_investimentos():
     investimentos = db.execute('''
     SELECT shark_id, projeto_id, valor_do_investimento, porcentagem_vendida_do_projeto
     FROM investimento
@@ -126,7 +126,7 @@ def list_investimentos():
     return render_template('investimento-list.html', investimento=investimentos)
 
 @APP.route('/investimentos/<int:id_projeto>/<int:id_shark>')
-def view_investments_by_ids(id_projeto, id_shark):
+def procurar_investimento(id_projeto, id_shark):
     num_id_projeto = int(id_projeto)
     num_id_shark = int(id_shark)
 
@@ -158,23 +158,23 @@ def view_investments_by_ids(id_projeto, id_shark):
       abort(404, 'ID do investimento {} não existe .'.format(str({num_id_projeto} +'/' + {num_id_shark})))
     return render_template('investimento.html', investimento=investimentos, projeto=projetos, shark=sharks)
 
-@APP.route('/investimentos/search/<expr>/')
-def search_investimento(expr):
-    temp = int(expr)
-    integer = '%' + int(expr) + '%'
-    search = {'response': temp }
-    investimentos = db.execute(''' 
-    SELECT shark_id, projeto_id, valor_do_investimento, porcentagem_vendida_do_projeto
-    FROM investimento
-    WHERE valor_do_investimento LIKE ?;
-    ''',[integer]).fetchall()
+# @APP.route('/investimentos/search/<expr>/')
+# def search_investimento(expr):
+#     temp = int(expr)
+#     integer = '%' + int(expr) + '%'
+#     search = {'response': temp }
+#     investimentos = db.execute(''' 
+#     SELECT shark_id, projeto_id, valor_do_investimento, porcentagem_vendida_do_projeto
+#     FROM investimento
+#     WHERE valor_do_investimento LIKE ?;
+#     ''',[integer]).fetchall()
 
-    if investimentos is None:
-        abort(404, 'investimento{} não existe .'.format(temp))
-    return render_template('projeto-search.html', search=search, investimento=investimentos)
+#     if investimentos is None:
+#         abort(404, 'investimento{} não existe .'.format(temp))
+#     return render_template('projeto-search.html', search=search, investimento=investimentos)
 
 @APP.route('/episodios')
-def list_episodios():
+def lista_episodios():
     episodios = db.execute('''
     SELECT numero_do_episodio, temporada
     FROM episodio
@@ -183,7 +183,7 @@ def list_episodios():
     return render_template('episodio-list.html', episodio=episodios)
 
 @APP.route('/episodios/<int:id>/')
-def view_episodes_by_id(id):
+def ver_episodios_por_id(id):
     num_id = int(id)
     episodios = db.execute('''
     SELECT numero_do_episodio, temporada
@@ -210,7 +210,7 @@ def view_episodes_by_id(id):
     return render_template('episodio.html', episodio=episodios, projeto = projetos, shark = sharks)
 
 @APP.route('/episodios/temporada/<int:temporada>/')
-def view_episodes_by_season(temporada):
+def ver_episodios_por_temporada(temporada):
     num_id = int(temporada)
     episodios = db.execute('''
     SELECT numero_do_episodio, temporada
@@ -230,7 +230,7 @@ def view_episodes_by_season(temporada):
     return render_template('episodio-season.html', episodio=episodios, temporada=temporadas)
 
 @APP.route('/sharks')
-def list_shark():
+def lista_shark():
     sharks = db.execute('''
     SELECT shark_id, nome
     FROM shark
@@ -239,7 +239,7 @@ def list_shark():
     return render_template('shark-list.html', shark=sharks)
 
 @APP.route('/sharks/<int:id>/')
-def view_episodes_by_shark(id):
+def ver_episodios_por_shark(id):
     num_id = int(id)
     sharks = db.execute('''
     SELECT nome
@@ -263,7 +263,7 @@ def view_episodes_by_shark(id):
     return render_template('shark.html', episodio=episodios, shark=sharks, investimento = investimentos)
 
 @APP.route('/sharks/search/<expr>/')
-def search_shark(expr):
+def procurar_shark(expr):
     temp = str(expr)
     string = '%' + str(expr) + '%'
     search = {'response': temp }
@@ -278,25 +278,25 @@ def search_shark(expr):
     return render_template('shark-search.html', search=search, shark=sharks)
 
 @APP.route('/total_investimentos')
-def search_total_investments():
-    total_investments = db.execute('''
+def investimentos_totais():
+    investimentos_totais = db.execute('''
     SELECT s.shark_id as shark, nome, sum(valor_do_investimento) AS total FROM
     shark s JOIN investimento i
     ON i.shark_id = s.shark_id 
     GROUP BY nome
     ORDER BY nome;''' ).fetchall()
-    return render_template('investimento_agrupado.html', total_investment = total_investments)
+    return render_template('investimento_agrupado.html', total_investment = investimentos_totais)
 
 @APP.route('/empreendedores_por_episodio/<int:episodio>')
-def entrepeneurs_by_episode(episodio):
+def ver_empreendedores_por_episodio(episodio):
     episodio = int(episodio)
-    entrepeneurs = db.execute('''
+    empreendedores = db.execute('''
     SELECT e.empreendedor_id, e.nome, e.genero, p.projeto_id as id_projeto, p.nome AS nome_projeto FROM empreendedor e 
     JOIN projeto p on p.projeto_id=e.projeto_id
     JOIN episodio ep on ep.numero_do_episodio=p.numero_do_episodio
     WHERE ep.numero_do_episodio = ?
     ORDER BY e.empreendedor_id;''',[episodio]).fetchall()
 
-    if entrepeneurs is None:
+    if empreendedores is None:
         abort(404, 'Não existem participantes no episódio {}.'.format(episodio))
-    return render_template('lista_empreendedores.html', entrepeneur=entrepeneurs, episodio=episodio)
+    return render_template('lista_empreendedores.html', entrepeneur=empreendedores, episodio=episodio)
