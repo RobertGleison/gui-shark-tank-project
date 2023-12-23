@@ -4,13 +4,14 @@
 <h1>Shark Tank - GUI</h1>
 
 <h2>Projeto</h2>
-<p>Esta aplicação web ilustra uma interface gráfica interativa para a base de dados Shark Tank.
+<p>
+    Esta aplicação web ilustra uma interface gráfica interativa para a base de dados Shark Tank.
     Este projeto foi feito para a grade de Base de Dados, pelos alunos: Joana Carvalho Dias Pinto,
     Mariana dos Santos Gomes e Robert Gleison dos Reis Pereira.
 </p>
 <br>
-<h2>Estatísticas agrupadas</h2>
 
+<h2>Estatísticas agrupadas</h2>
 <!-- Inicio da tabela -->
 <table>
     <tr>
@@ -38,35 +39,27 @@
         <td>{{stats.n_investimentos}}</td>
     </tr>
 </table>
+<!-- Fim da tabela -->
 
-<p>Acessar lista de investimentos totais
-    <a href="/total_investimentos">aqui</a>
-</p>
+<p>Acessar lista de investimentos totais <a href="/total_investimentos">aqui</a></p>
 
-<p>
 <form name="entrepeneurs_by_episode"
-    action="javascript:window.open('/lista_episodio/'+document.forms['entrepeneurs_by_episode'].elements['id'].value,'_self')">
+    action="javascript:window.open('/empreendedores_por_episodio/'+document.forms['entrepeneurs_by_episode'].elements['id'].value,'_self')">
     Listar empreendedores por episódio: <input value="1" name="id" type="number" min="1" /><input type="submit"
         value="procurar" />
 </form>
-</p>
-<!-- Fim da tabela -->
 
 <br>
-<h2>Navegação interativa</h2>
 
+<h2>Navegação interativa</h2>
 <h3>Empreendedores:</h3>
 <p>Acessar informação de empreendedores:</p>
-<p>
-    <!-- Botão que de listar todos os empreendedores -->
-    <a href="/empreendedores">listar empreendedores</a>
-</p>
-<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+<p><a href="/empreendedores">listar empreendedores</a></p>
 <form name="e_id"
     action="javascript:window.open('/empreendedores/'+document.forms['e_id'].elements['id'].value,'_self')">
     Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
 </form>
-<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+
 <form name="e_nome"
     action="javascript:window.open('/empreendedores/search/'+document.forms['e_nome'].elements['expr'].value,'_self')">
     Procurar por nome: <input name="expr" id="expr" value="Aaron Krause" required />
@@ -75,15 +68,12 @@
 
 <h3>Projetos:</h3>
 <p>Acessar informação de projetos:</p>
-<p>
-    <!-- Botão que de listar todos os projetos -->
-    <a href="/projetos">listar projetos</a>
-</p>
-<!-- cria uma nova página com o resultado da pesquisa pelo id-->
+<p><a href="/projetos">listar projetos</a></p>
+
 <form name="p_id" action="javascript:window.open('/projetos/'+document.forms['p_id'].elements['id'].value,'_self')">
     Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
 </form>
-<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+
 <form name="p_nome"
     action="javascript:window.open('/projetos/search/'+document.forms['p_nome'].elements['expr'].value,'_self')">
     Procurar por nome: <input name="expr" id="expr" value="Ava The Elephant" required />
@@ -92,12 +82,8 @@
 
 <h3>Investimentos:</h3>
 <p>Acessar informação de investimentos:</p>
-<p>
-    <!-- Botão que de listar todos os investimentos -->
-    <a href="/investimentos">listar investimentos</a>
-</p>
+<p><a href="/investimentos">listar investimentos</a></p>
 
-<!-- cria uma nova página com o resultado da pesquisa pelo id do investimento -->
 <form id="searchForm"
     action="javascript:window.open('investimentos/'+document.forms['searchForm'].elements['projeto_id'].value+'/'+document.forms['searchForm'].elements['shark_id'].value,'_self')">
     Inserir Id do projeto:<input type="number" name="projeto_id" value="1" min="1" /><br />
@@ -124,17 +110,14 @@
 
 <h3>Episodios:</h3>
 <p>Acessar informação de episodios:</p>
-<p>
-    <!-- Botão que de listar todos os episodios -->
-    <a href="/episodios">listar episodios</a>
-</p>
-<!-- cria uma nova página com o resultado da pesquisa pelo numero do episodio-->
+<p><a href="/episodios">listar episodios</a></p>
+
 <form name="Numero_do_episodio"
     action="javascript:window.open('/episodios/'+document.forms['Numero_do_episodio'].elements['id'].value,'_self')">
     Procurar por numero do episodio:<input value="1" name="id" type="number" min="1" /><input type="submit"
         value="procurar" />
 </form>
-<!-- cria uma nova página com o resultado da pesquisa pela temporada-->
+
 <form name="temporada_id"
     action="javascript:window.open('/episodios/temporada/'+document.forms['temporada_id'].elements['temporada'].value,'_self')">
     Procurar por numero de temporada: <input value="1" name="temporada" type="number" min="1" />
@@ -143,16 +126,13 @@
 
 <h3>Shark:</h3>
 <p>Acessar informação de Shark:</p>
-<p>
-    <!-- Botão que de listar todos os shark -->
-    <a href="/sharks">listar shark</a>
-</p>
-<!-- cria uma nova página com o resultado da pesquisa pelo id-->
+<p><a href="/sharks">listar shark</a></p>
+
 <form name="shark_id"
     action="javascript:window.open('/sharks/'+document.forms['shark_id'].elements['id'].value,'_self')">
     Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
 </form>
-<!-- cria uma nova página com o resultado da pesquisa pelo nome-->
+
 <form name="shark_nome"
     action="javascript:window.open('/sharks/search/'+document.forms['shark_nome'].elements['expr'].value,'_self')">
     Procurar por nome: <input name="expr" id="expr" value="Barbara Corcoran" required />

@@ -1,48 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>{{projeto.nome}}</h1>
-<p>
-  <b>ID do Projeto: </b>{{ projeto.projeto_id }}
-</p>
-<p>
-  <b>Nome: </b>{{ projeto.nome }}
-</p>
-<p>
-  <b>Website: </b>{{ projeto.website }}
-</p>
-<p>
-  <b>Valor de Mercado: </b>$ {{ projeto.valor_de_mercado }},00
-</p>
-<p>
-  <b>Categoria: </b>{{ projeto.categoria }}
-</p>
-<p>
-  <b>Descrição: </b>{{ projeto.descricao }}
-</p>
+<p><b>ID do Projeto: </b>{{ projeto.projeto_id }}</p>
+<p><b>Nome: </b>{{ projeto.nome }}</p>
+<p><b>Website: </b>{{ projeto.website }}</p>
+<p><b>Valor de Mercado: </b>$ {{ projeto.valor_de_mercado }},00</p>
+<p><b>Categoria: </b>{{ projeto.categoria }}</p>
+<p><b>Descrição: </b>{{ projeto.descricao }}</p>
 <p>
   <b>Episódio: </b>
   <a href="/episodios/{{projeto.numero_do_episodio }}">{{ projeto.numero_do_episodio }}</a>
 </p>
+
 <p>
-<b>Empreendedores:</b>
-<ul>
-  {% for emp in empreendedor %}
-  <li>
-    <a href="/empreendedores/{{emp.empreendedor_id }}">{{emp.nome}}</a>
-  </li>
-  {% endfor %}
-  {% if investimento %}
-</ul>
-<b>Investimentos Recebidos: </b>
-<ul>
-  
-  {% for i in investimento %}
-  <li>
-    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">Shark {{i.shark_id }}: $ {{i.valor_do_investimento}},00</a>
-  </li>
-  {% endfor %}
-  
-</ul>
+  <b>Empreendedores:</b>
+  <ul>
+    {% for emp in empreendedor %}
+    <li><a href="/empreendedores/{{emp.empreendedor_id }}">{{emp.nome}}</a></li>
+    {% endfor %}
+    {% if investimento %}
+  </ul>
+</P>
+
+<P>
+  <b>Investimentos Recebidos: </b>
+  <ul>
+    {% for i in investimento %}
+    <li><a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">Shark {{i.shark_id }}: $ {{i.valor_do_investimento}},00</a></li>
+    {% endfor %}
+  </ul>
 </p>
 {% endif %}
 {% endblock %}

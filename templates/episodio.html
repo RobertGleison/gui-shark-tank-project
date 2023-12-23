@@ -1,26 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>Episódio {{episodio.numero_do_episodio}}</h1>
-<p>
-  <b>Numero do Episodio: </b>{{ episodio.numero_do_episodio}}
-</p>
+<p><b>Numero do Episodio: </b>{{ episodio.numero_do_episodio}}</p>
+
 <p>
   <b>Projetos apresentados:</b>
-
 <ul>
   {% for p in projeto %}
-  <li>
-    <a href="/projetos/{{p.projeto_id }}">{{ p.nome }}</a>
-  </li>
+  <li><a href="/projetos/{{p.projeto_id }}">{{ p.nome }}</a></li>
   {% endfor %}
 </ul>
+</p>
 
-<b>Sharks participantes:</b>
+<p>
+  <b>Sharks participantes:</b>
 <ul>
   {% for s in shark %}
-  <li>
-    <a href="/sharks/{{s.shark_id }}">{{ s.nome }}</a>
-  </li>
+  <li><a href="/sharks/{{s.shark_id }}">{{ s.nome }}</a></li>
   {% endfor %}
 </ul>
 </p>

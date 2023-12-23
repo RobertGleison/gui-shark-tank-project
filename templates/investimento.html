@@ -1,36 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>Investimento</h1>
+<p><b>ID do Projeto: </b>{{ investimento.projeto_id }}</p>
+<p><b>ID do Shark: </b>{{ investimento.shark_id }}</p>
+<p><b>Valor do investimento: </b>$ {{ investimento.valor_do_investimento }},00</p>
+<p><b>Percentagem vendida do projeto: </b>{{ investimento.porcentagem_vendida_do_projeto }}%</p>
 
 <p>
-  <b>ID do Projeto: </b>{{ investimento.projeto_id }}
-</p>
-
-<p>
-  <b>ID do Shark: </b>{{ investimento.shark_id }}
-</p>
-
-<p>
-  <b>Valor do investimento: </b>$ {{ investimento.valor_do_investimento }},00
-</p>
-<p>
-  <b>Percentagem vendida do projeto: </b>{{ investimento.porcentagem_vendida_do_projeto }}%
-</p>
-<b>Nome do projeto: </b>
-<ul>
-  
-  <li>
-    <a href="/projetos/{{projeto.projeto_id }}">{{ projeto.nome }}</a>
-  </li>
-  </ul>
-
-  <b>Shark investidor: </b>
+    <b>Nome do projeto: </b>
   <ul>
-  <li>
-    <a href="/sharks/{{shark.shark_id }}">{{ shark.nome }}</a>
-  </li>
+    <li> <a href="/projetos/{{projeto.projeto_id }}">{{ projeto.nome }}</a></li>
+  </ul>
+</p>
 
-</ul>
+<p>
+    <b>Shark investidor: </b>
+  <ul>
+    <li><a href="/sharks/{{shark.shark_id }}">{{ shark.nome }}</a></li>
+  </ul>
 </p>
 
 {% endblock %}

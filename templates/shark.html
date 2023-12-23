@@ -1,26 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>{{shark.nome}}</h1>
+<p><b>Nome: </b>{{ shark.nome }}</p>
+<p><b>Participações em episódios: </b></p>
+
 <p>
-<p>
-  <b>Nome: </b>{{ shark.nome }}
+  <ul>
+    {% for ep in episodio %}
+    <li><a href="/episodios/{{ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a></li>
+    {% endfor %}
+  </ul>
 </p>
+
 <p>
-  <b>Participações em episódios: </b>
-<ul>
-  {% for ep in episodio %}
-  <li>
-    <a href="/episodios/{{ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a>
-  </li>
-  {% endfor %}
-</ul>
-<b>Investimentos feitos: </b>
-<ul>
-  {% for i in investimento %}
-  <li>
-    <a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">Projeto {{i.projeto_id }}: $ {{i.valor_do_investimento}},00</a>
-  </li>
-  {% endfor %}
-</ul>
+  <b>Investimentos feitos: </b>
+  <ul>
+    {% for i in investimento %}
+    <li><a href="/investimentos/{{i.projeto_id }}/{{i.shark_id }}">Projeto {{i.projeto_id }}: $ {{i.valor_do_investimento}},00</a></li>
+    {% endfor %}
+  </ul>
 </p>
 {% endblock %}

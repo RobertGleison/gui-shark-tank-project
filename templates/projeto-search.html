@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>Resultados de Procura</h1>
 <p><b>Expressão procurada</b>: "{{ search.response }}"</p>
 <p>
-<ul>
-  {% for p in projeto %}
-  <li>
-    <a href="/projetos/{{ p.projeto_id }}">{{p.nome }}</a>
-  </li>
-  {% endfor %}
-</ul>
+  <ul>
+    {% for p in projeto %}
+    <li><a href="/projetos/{{ p.projeto_id }}">{{p.nome }}</a></li>
+    {% endfor %}
+  </ul>
 </p>
 {% endblock %}

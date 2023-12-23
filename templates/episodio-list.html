@@ -1,23 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>Episodios</h1>
 <table>
     <tr>
-        <th>
-            <b>Número do episodio</b>
-        </th>
-        <th>
-            <b>Temporada</b>
-        </th>
-            </tr>
+        <th> <b>Número do episodio</b> </th>
+        <th><b>Temporada</b></th>
+    </tr>
     {% for ep in episodio %}
     <tr>
-        <td>
-            <a href="/episodios/{{ ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a>
-        </td>
-        <td>
-            {{ ep.Temporada }}
-        </td>
+        <td><a href="/episodios/{{ ep.numero_do_episodio }}">{{ep.numero_do_episodio }}</a></td>
+        <td>{{ ep.Temporada }}</td>
     </tr>
     {% endfor %}
 </table>
