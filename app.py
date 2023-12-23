@@ -274,7 +274,7 @@ def search_shark(expr):
     ''',[string]).fetchall()
     return render_template('shark-search.html', search=search, shark=sharks)
 
-@APP.route('/total_investments')
+@APP.route('/total_investimentos')
 def search_total_investments():
     total_investments = db.execute('''
     SELECT s.shark_id as shark, nome, sum(valor_do_investimento) AS total FROM
@@ -284,3 +284,13 @@ def search_total_investments():
     ORDER BY nome;''' ).fetchall()
     return render_template('investimento_agrupado.html', total_investment = total_investments)
 
+@APP.route('/lista_episodio/<int:episodio>')
+def entrepeneurs_by_episode(episodio):
+    temp = int(episodio)
+    entrepeneurs = db.execute('''
+    SELECT e.empreendedor_id, e.nome, e.genero, p.projeto_id as id_projeto, p.nome AS nome_projeto FROM empreendedor e 
+    JOIN projeto p on p.projeto_id=e.projeto_id
+    JOIN episodio ep on ep.numero_do_episodio=p.numero_do_episodio
+    WHERE ep.numero_do_episodio = ?
+    ORDER BY e.empreendedor_id;''',[temp]).fetchall()
+    return render_template('lista_empreendedores.html', entrepeneur=entrepeneurs, temp=temp)

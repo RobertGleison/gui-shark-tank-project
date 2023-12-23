@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% block content %}
 
@@ -39,9 +38,17 @@
         <td>{{stats.n_investimentos}}</td>
     </tr>
 </table>
-<p>Acessar lista de investimentos totais
 
-<a href="/total_investments">aqui</a>
+<p>Acessar lista de investimentos totais
+    <a href="/total_investimentos">aqui</a>
+</p>
+
+<p>
+<form name="entrepeneurs_by_episode"
+    action="javascript:window.open('/lista_episodio/'+document.forms['entrepeneurs_by_episode'].elements['id'].value,'_self')">
+    Listar empreendedores por episódio: <input value="1" name="id" type="number" min="1" /><input type="submit"
+        value="procurar" />
+</form>
 </p>
 <!-- Fim da tabela -->
 
@@ -91,7 +98,8 @@
 </p>
 
 <!-- cria uma nova página com o resultado da pesquisa pelo id do investimento -->
-<form id="searchForm" action="javascript:window.open('investimentos/'+document.forms['searchForm'].elements['projeto_id'].value+'/'+document.forms['searchForm'].elements['shark_id'].value,'_self')">
+<form id="searchForm"
+    action="javascript:window.open('investimentos/'+document.forms['searchForm'].elements['projeto_id'].value+'/'+document.forms['searchForm'].elements['shark_id'].value,'_self')">
     Inserir Id do projeto:<input type="number" name="projeto_id" value="1" min="1" /><br />
     Inserir Id do shark:<input type="number" name="shark_id" value="1" min="1" /><br />
     <input type="submit" value="Procurar" />
@@ -121,8 +129,10 @@
     <a href="/episodios">listar episodios</a>
 </p>
 <!-- cria uma nova página com o resultado da pesquisa pelo numero do episodio-->
-<form name="Numero_do_episodio" action="javascript:window.open('/episodios/'+document.forms['Numero_do_episodio'].elements['id'].value,'_self')">
-    Procurar por numero do episodio:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
+<form name="Numero_do_episodio"
+    action="javascript:window.open('/episodios/'+document.forms['Numero_do_episodio'].elements['id'].value,'_self')">
+    Procurar por numero do episodio:<input value="1" name="id" type="number" min="1" /><input type="submit"
+        value="procurar" />
 </form>
 <!-- cria uma nova página com o resultado da pesquisa pela temporada-->
 <form name="temporada_id"
@@ -138,7 +148,8 @@
     <a href="/sharks">listar shark</a>
 </p>
 <!-- cria uma nova página com o resultado da pesquisa pelo id-->
-<form name="shark_id" action="javascript:window.open('/sharks/'+document.forms['shark_id'].elements['id'].value,'_self')">
+<form name="shark_id"
+    action="javascript:window.open('/sharks/'+document.forms['shark_id'].elements['id'].value,'_self')">
     Procurar por Id:<input value="1" name="id" type="number" min="1" /><input type="submit" value="procurar" />
 </form>
 <!-- cria uma nova página com o resultado da pesquisa pelo nome-->

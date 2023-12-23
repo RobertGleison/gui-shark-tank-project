@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Empreendedores participantes do Episódio {{temp}}:</h1>
+
+<table>
+    <tr>
+        <th>
+            <b>Id</b>
+        </th>
+        <th>
+            <b>Nome</b>
+        </th>
+        <th>
+            <b>Genero</b>
+        </th>
+        <th>
+            <b>Projeto</b>
+        </th>
+    </tr>
+    {% for e in entrepeneur %}
+    <tr>
+        <td>
+            {{e.empreendedor_id }}</a>
+        </td>
+        <td>
+            <a href="/empreendedores/{{ e.empreendedor_id }}">{{ e.nome }}
+        </td>
+        <td>
+            {{ e.genero }}
+        </td>
+        <td>
+            <a href="/projetos/{{ e.id_projeto}}"> {{ e.nome_projeto }}</a>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
